@@ -2,7 +2,7 @@ package com.luyitian.son.weixin.service.impl;
 
 import com.luyitian.son.base.api.BaseApiService;
 import com.luyitian.son.base.entity.BaseResponse;
-import com.luyitian.son.weixin.entity.AppEntity;
+import com.luyitian.son.weixin.output.dto.AppDto;
 import com.luyitian.son.weixin.service.WeiXinService;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
  * 微信接口的实现
  */
 @RestController
-public class WeiXinServiceImpl  extends BaseApiService<AppEntity> implements WeiXinService {
+public class WeiXinServiceImpl  extends BaseApiService<AppDto> implements WeiXinService {
   @Override
-  public BaseResponse<AppEntity> getAppentity() {
-    return setResultSuccess(new AppEntity("111", "222"));
+  public BaseResponse<AppDto> getAppentity() {
+    return setResultSuccess(new AppDto("111", "222"));
   }
     }

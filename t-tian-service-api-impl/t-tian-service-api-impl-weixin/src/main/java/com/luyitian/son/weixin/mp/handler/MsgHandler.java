@@ -1,7 +1,7 @@
 package com.luyitian.son.weixin.mp.handler;
 import com.luyitian.son.base.entity.BaseResponse;
 import com.luyitian.son.constants.Constants;
-import com.luyitian.son.member.entity.UserEntity;
+import com.luyitian.son.member.input.dto.UserInpDTO;
 import com.luyitian.son.utils.RegexUtils;
 import com.luyitian.son.weixin.feign.MemberServiceFeign;
 import com.luyitian.son.weixin.mp.builder.TextBuilder;
@@ -113,12 +113,12 @@ public class MsgHandler extends AbstractHandler {
 		if(RegexUtils.checkMobile(fromContent)){
 		// 3. 如果是手机号码格式的话，随机生成6位注册码
 			// 1.根据手机号码调用会员服务接口查询用户信息是否存在
-			BaseResponse<UserEntity> reusltUserInfo = memberServiceFeign.existMobile(fromContent);
+			BaseResponse<UserInpDTO> reusltUserInfo = memberServiceFeign.existMobile(fromContent);
 			if (reusltUserInfo.getRtnCode().equals(Constants.HTTP_RES_CODE_200)) {
 				return new TextBuilder().build("该手机号码" + fromContent + "已经存在!", wxMessage, weixinService);
 			}
 			if (!reusltUserInfo.getRtnCode().equals(Constants.HTTP_RES_CODE_EXISTMOBILE_203)) {
-				return new TextBuilder().build(reusltUserInfo.getMsg(), wxMessage, weixinService);
+				return new TextBuilder().build(reusltUserInfo.getMsg(), wxMessage,weixinService);
 			}
 			int registCode=registCode();
 			String content= registrationCodeMessage.format(registrationCodeMessage, registCode);

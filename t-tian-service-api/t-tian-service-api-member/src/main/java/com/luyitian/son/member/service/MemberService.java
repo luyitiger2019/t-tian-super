@@ -1,8 +1,8 @@
 package com.luyitian.son.member.service;
 
 import com.luyitian.son.base.entity.BaseResponse;
-import com.luyitian.son.member.entity.UserEntity;
-import com.luyitian.son.weixin.entity.AppEntity;
+import com.luyitian.son.member.output.dto.UserOutDTO;
+import com.luyitian.son.weixin.output.dto.AppDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -22,7 +22,7 @@ public interface MemberService {
      */
     @ApiOperation(value="会员服务调用微信服务")
     @GetMapping("getmemberInvokeWeixin")
-    public BaseResponse<AppEntity> memberInvokeWeixin();
+    public BaseResponse<AppDto> memberInvokeWeixin();
     /**
      * 根据手机号码查询是否已经存在,如果存在返回当前用户信息
      *
@@ -33,5 +33,5 @@ public interface MemberService {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "mobile", dataType = "String", required = true, value = "用户手机号码"), })
     @PostMapping("/existMobile")
-    BaseResponse<UserEntity> existMobile(@RequestParam("mobile") String mobile);
+    BaseResponse<UserOutDTO> existMobile(@RequestParam("mobile") String mobile);
 }

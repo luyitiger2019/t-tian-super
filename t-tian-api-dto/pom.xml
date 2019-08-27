@@ -12,9 +12,17 @@
     <packaging>pom</packaging>
     <modules>
         <module>t-tian-api-member-dto</module>
+        <module>t-tian-api-weixin-dto</module>
     </modules>
 
     <artifactId>t-tian-api-dto</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.spring4all</groupId>
+            <artifactId>swagger-spring-boot-starter</artifactId>
+            <version>1.7.0.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

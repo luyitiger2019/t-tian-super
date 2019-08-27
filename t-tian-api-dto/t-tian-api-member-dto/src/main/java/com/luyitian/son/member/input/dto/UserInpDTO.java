@@ -1,15 +1,17 @@
-package com.luyitian.son.member.entity;
+package com.luyitian.son.member.input.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.util.Date;
 
 /**
- * 用户信息实体类
+ * 用户输入DTO
  */
 @Data
-public class UserEntity {
+@ApiModel(value = "用户注册输入信息")
+public class UserInpDTO {
     /**
      * userid
      */
@@ -45,22 +47,8 @@ public class UserEntity {
      */
     @ApiModelProperty(value = "用户年龄")
     private Long age;
-    /**
-     * 注册时间
-     */
-    @ApiModelProperty(value = "创建时间")
-    private Date createTime;
-    /**
-     * 修改时间
-     *
-     */
-    @ApiModelProperty(value = "修改时间")
-    private Date updateTime;
-    /**
-     * 账号是否可以用 1 正常 0冻结
-     */
-    @ApiModelProperty(value = "账号是否可以用 1 正常 0冻结")
-    private char is_avalible;
+
+
     /**
      * 用户头像
      */

@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.luyitian.son.base.api.BaseApiService;
 import com.luyitian.son.base.entity.BaseResponse;
 import com.luyitian.son.constants.Constants;
-import com.luyitian.son.member.entity.UserEntity;
 import com.luyitian.son.member.fengin.VerificaCodeServiceFeign;
+import com.luyitian.son.member.input.dto.UserInpDTO;
 import com.luyitian.son.member.mapper.UserMapper;
 import com.luyitian.son.member.service.MemberRegisterService;
 import com.luyitian.son.utils.MD5Util;
@@ -27,7 +27,7 @@ public class MemberRegisterServiceImpl extends BaseApiService<JSONObject> implem
     private VerificaCodeServiceFeign verificaCodeServiceFeign;
     @Transactional
     @Override
-    public BaseResponse<JSONObject> register(@RequestBody  UserEntity userEntity, String registerCode) {
+    public BaseResponse<JSONObject> register(@RequestBody UserInpDTO userEntity, String registerCode) {
 
        //1.参数验证，验证注册码是否正确
         String userName=userEntity.getUserName();

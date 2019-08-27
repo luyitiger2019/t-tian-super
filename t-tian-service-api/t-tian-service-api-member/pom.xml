@@ -13,12 +13,12 @@
     <dependencies>
         <dependency>
             <groupId>com.luyitian.son</groupId>
-            <artifactId>t-tian-api-entity-weixin</artifactId>
+            <artifactId>t-tian-api-weixin-dto</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
                 <groupId>com.luyitian.son</groupId>
-                <artifactId>t-tian-api-entity-member</artifactId>
+                <artifactId>t-tian-api-member-dto</artifactId>
                 <version>1.0</version>
         </dependency>
     </dependencies>
