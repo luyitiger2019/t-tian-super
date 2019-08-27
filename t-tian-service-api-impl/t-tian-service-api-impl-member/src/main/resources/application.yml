@@ -1,0 +1,19 @@
+spring:
+  #  application:
+  #    name: app-mayikt-weixin
+  redis:
+    host: 192.168.1.131
+    password: 123456
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 100
+        min-idle: 1
+        max-wait: -1
+        max-active: 1000
+  ###数据库相关连接
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.132:3306/t-tian-test

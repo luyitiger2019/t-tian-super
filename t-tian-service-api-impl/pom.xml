@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>t-tian-parent</artifactId>
+        <groupId>com.luyitian.son</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>t-tian-service-api-impl</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>t-tian-service-api-impl-weixin</module>
+        <module>t-tian-service-api-impl-member</module>
+    </modules>
+
+    <dependencies>
+        <!-- springcloud feign组件 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--  阿波罗整合 SpringBoot-->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+    </dependencies>
+
+
+</project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>t-tian-parent</artifactId>
+        <groupId>com.luyitian.son</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>t-tian-springcloud-basic</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>t-tian-basic-springcloud-eureka</module>
+        <module>t-tian-basic-springcloud-zuul</module>
+    </modules>
+    <dependencies>
+        <!--  阿波罗整合 SpringBoot-->
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-core</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
+
+</project>

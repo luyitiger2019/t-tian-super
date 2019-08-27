@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>t-tian-service-api-impl</artifactId>
+        <groupId>com.luyitian.son</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>t-tian-service-api-impl-member</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.luyitian.son</groupId>
+            <artifactId>t-tian-service-api-member</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.luyitian.son</groupId>
+            <artifactId>t-tian-service-api-weixin</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <!-- mybatis相关依赖 -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+        <!-- mysql 依赖 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>t-tian-service-api-impl</artifactId>
+        <groupId>com.luyitian.son</groupId>
+        <version>1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>t-tian-service-api-impl-weixin</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.luyitian.son</groupId>
+            <artifactId>t-tian-service-api-weixin</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>3.3.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>xstream</artifactId>
+                    <groupId>com.thoughtworks.xstream</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>
+                spring-cloud-starter-netflix-eureka-client
+            </artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>xstream</artifactId>
+                    <groupId>com.thoughtworks.xstream</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <artifactId>xstream</artifactId>
+            <groupId>com.thoughtworks.xstream</groupId>
+            <version>1.4.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.luyitian.son</groupId>
+            <artifactId>t-tian-service-api-member</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+</project>
