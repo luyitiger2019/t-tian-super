@@ -35,7 +35,7 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
         {
             return setResultError("密码不能为空");
         }
-        //2. 对登录密码进行加密
+        //2. 对登录密码进行加密,需要加密后对比
         String newPassword= MD5Util.MD5(password);
         String loginType = userLoginInpDTO.getLoginType();
         if(StringUtils.isEmpty(loginType))
@@ -47,12 +47,13 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
          * 目的是现在登录范围
          */
         if(!(loginType.equalsIgnoreCase(Constants.MEMBER_LOGIN_TYPE_ANDROID
-                 ) || loginType.equals(Constants.MEMBER_LOGIN_TYPE_IOS) || loginType.equals(Constants.MEMBER_LOGIN_TYPE_PC)))
+                 ) || loginType.equalsIgnoreCase(Constants.MEMBER_LOGIN_TYPE_IOS)
+                || loginType.equalsIgnoreCase(Constants.MEMBER_LOGIN_TYPE_PC)))
         {
             return setResultError("登录环境存在问题，请确认你的登录设备");
         }
         //3.手机号码加密码进行登录,判断用户是否存在
-        UserDO userDO = userMapper.login(mobile,password);
+        UserDO userDO = userMapper.login(mobile,newPassword);
         if(null==userDO)
         {
             return setResultError("用户名称或密码错误");
