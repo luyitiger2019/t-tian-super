@@ -12,7 +12,7 @@ import com.luyitian.son.member.service.MemberRegisterService;
 import com.luyitian.son.utils.MD5Util;
 import com.luyitian.son.utils.bean.LuyiBeanUtils;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.BeanUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;

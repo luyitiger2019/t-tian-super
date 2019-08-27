@@ -1,4 +1,4 @@
-package com.luyitian.son.core.utils.weixin.mp.error;
+package com.luyitian.son.weixin.mp.error;
 
 import org.springframework.boot.web.server.ErrorPage;
 import org.springframework.boot.web.server.ErrorPageRegistrar;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * Created by Binary Wang on 2018/8/25.
  * </pre>
  *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
+ *
  */
 @Component
 public class ErrorPageConfiguration implements ErrorPageRegistrar {

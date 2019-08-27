@@ -56,10 +56,11 @@ public class RedisUtil {
 
 	/**
 	 * 根据对应的key删除key
-	 * 
+	 *
 	 * @param key
 	 */
-	public void delKey(String key) {
-		stringRedisTemplate.delete(key);
+	public Boolean delKey(String key) {
+		return stringRedisTemplate.delete(key);
+
 	}
 }

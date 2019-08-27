@@ -1,4 +1,4 @@
-package com.luyitian.son.core.utils.weixin.mp.error;
+package com.luyitian.son.weixin.mp.error;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by Binary Wang on 2018/8/25.
  * </pre>
  *
- * @author <a href="https://github.com/binarywang">Binary Wang</a>
+ *
  */
 @Controller
 @RequestMapping("/error")

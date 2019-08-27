@@ -17,8 +17,4 @@ spring:
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://192.168.1.132:3306/t-tian-test
-########打印MYBATIS日志
-logging:
-  level:
-    root:
-      com.luyitian.son.member.mapper： DEBUG
+
