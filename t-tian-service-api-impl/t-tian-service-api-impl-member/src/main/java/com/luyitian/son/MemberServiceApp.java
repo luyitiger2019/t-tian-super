@@ -1,4 +1,4 @@
-package com.luyitian.son.member;
+package com.luyitian.son;
 
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import com.spring4all.swagger.EnableSwagger2Doc;

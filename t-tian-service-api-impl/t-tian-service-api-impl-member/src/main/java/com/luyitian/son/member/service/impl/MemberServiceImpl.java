@@ -4,9 +4,11 @@ import com.luyitian.son.base.api.BaseApiService;
 import com.luyitian.son.base.entity.BaseResponse;
 import com.luyitian.son.constants.Constants;
 import com.luyitian.son.member.mapper.UserMapper;
+import com.luyitian.son.member.mapper.entity.UserDO;
 import com.luyitian.son.member.output.dto.UserOutDTO;
 import com.luyitian.son.member.service.MemberService;
 import com.luyitian.son.member.fengin.WeiXinServiceFeign;
+import com.luyitian.son.utils.bean.LuyiBeanUtils;
 import com.luyitian.son.weixin.output.dto.AppDto;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +33,12 @@ public class MemberServiceImpl extends BaseApiService<UserOutDTO> implements Mem
             return setResultError("手机号码不能为空");
         }
         //验证手机号码是否存在，用数据库来查询，需要单独定义CODE，表示用户不存在
-        UserOutDTO userDTO = userMapper.existMobile(mobile);
-         if(userDTO==null)
+        UserDO userDO = userMapper.existMobile(mobile);
+         if(userDO==null)
          {
              return setResultError(Constants.HTTP_RES_CODE_EXISTMOBILE_203,"用户信息不存在");
          }
-        return setResultSuccess(userDTO);
+
+        return setResultSuccess(LuyiBeanUtils.doToDto(userDO, UserOutDTO.class));
     }
 }
