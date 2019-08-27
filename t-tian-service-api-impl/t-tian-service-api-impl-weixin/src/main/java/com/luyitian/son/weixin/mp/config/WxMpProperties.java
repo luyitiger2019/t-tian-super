@@ -1,7 +1,7 @@
 package com.luyitian.son.weixin.mp.config;
 
 
-import com.luyitian.son.weixin.mp.utils.JsonUtils;
+
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -75,6 +75,6 @@ public class WxMpProperties {
 
     @Override
     public String toString() {
-        return JsonUtils.toJson(this);
+        return com.luyitian.son.core.utils.weixin.mp.utils.JsonUtils.toJson(this);
     }
 }
