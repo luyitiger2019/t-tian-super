@@ -34,4 +34,7 @@ public interface MemberService {
             @ApiImplicitParam(paramType = "query", name = "mobile", dataType = "String", required = true, value = "用户手机号码"), })
     @PostMapping("/existMobile")
     BaseResponse<UserOutDTO> existMobile(@RequestParam("mobile") String mobile);
+    @GetMapping("/getUserInfo")
+    @ApiOperation(value = "查询用户信息")
+    BaseResponse<UserOutDTO> getUserInfo(@RequestParam("tonken") String tonken);
 }

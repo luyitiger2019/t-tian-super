@@ -32,7 +32,7 @@ public interface Constants {
 	Integer HTTP_RES_CODE_EXISTMOBILE_203=203;
 
 	// token
-	String MEMBER_TOKEN_KEYPREFIX = "t-luyi.member.login:";
+	String MEMBER_TOKEN_KEYPREFIX = "luyi.member.login";
 
 	// 安卓的登陆类型
 	String MEMBER_LOGIN_TYPE_ANDROID = "Android";

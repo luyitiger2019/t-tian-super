@@ -64,7 +64,7 @@ public class ConverterUtils {
 	 * 
 	 * @param obj
 	 *            需要转换为int的对象
-	 * @param defaultVal
+	 *
 	 *            默认值
 	 * @return obj转换成的int值
 	 */

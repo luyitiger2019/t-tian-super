@@ -6,7 +6,9 @@ import com.luyitian.son.base.entity.BaseResponse;
 import com.luyitian.son.constants.Constants;
 import com.luyitian.son.member.input.dto.UserLogInputDTO;
 import com.luyitian.son.member.mapper.UserMapper;
+import com.luyitian.son.member.mapper.UserTokenMapper;
 import com.luyitian.son.member.mapper.entity.UserDO;
+import com.luyitian.son.member.mapper.entity.UserTokenDo;
 import com.luyitian.son.member.service.MemberLoginService;
 import com.luyitian.son.utils.MD5Util;
 import com.luyitian.son.utils.tonken.GenerateToken;
@@ -22,6 +24,8 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
     private UserMapper userMapper;
    @Autowired
     private GenerateToken generateToken;
+   @Autowired
+    private UserTokenMapper userTokenMapper;
     @Override
     public BaseResponse<JSONObject> login(@RequestBody  UserLogInputDTO userLoginInpDTO) {
        //1.验证参数
@@ -62,12 +66,33 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
         // 用户每一个端登录成功都会生成一个令牌，是零时的，而且唯一的，存在REDIS中作为REDISkey
         //4.生成TONKEN
         Long userId = userDO.getUserId();
+         //5.根据USERID+logintype+isavalie查询当前登录类型的登陆过没有
+        UserTokenDo userTokenDo = userTokenMapper.selectByUserIdAndLoginType(userId, loginType);
+       if(null!=userTokenDo)
+       {
+           String token = userTokenDo.getToken();
+           //从缓存中删除TONKEN
+           Boolean isremoveTonken = generateToken.removeToken(token);
+           if(isremoveTonken)
+           {
+               //将TONKEN的状态改为1
+               userTokenMapper.updateTokenAvailability(token);
+           }
+       }
 
-        //5.获取令牌,令牌前缀+登录类型。保证在REDIS的值为USERid
+        //6.获取令牌,令牌前缀+登录类型。保证在REDIS的值为USERid
         String keyprefix=Constants.MEMBER_TOKEN_KEYPREFIX+loginType;
-        String  userTonken= generateToken.createToken(keyprefix, userId+"");
+        String  newTonken= generateToken.createToken(keyprefix, userId+"");
+        UserTokenDo userToken=new UserTokenDo();
+        userToken.setUserId(userId);
+        userToken.setLoginType(userLoginInpDTO.getLoginType());
+        userToken.setToken(newTonken);
+        userToken.setDeviceInfor(userLoginInpDTO.getDeviceInfor());
+        userTokenMapper.insertUserToken(userToken);
         JSONObject data=new JSONObject();
-        data.put("userToken", userTonken);
+        data.put("userToken", newTonken);
+        //1.插入新的tonken
+
         return setResultSuccess(data);
     }
 }

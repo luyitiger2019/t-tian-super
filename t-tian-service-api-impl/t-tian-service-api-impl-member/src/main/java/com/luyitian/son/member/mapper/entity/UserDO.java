@@ -2,13 +2,14 @@ package com.luyitian.son.member.mapper.entity;
 
 import java.util.Date;
 
+import com.luyitian.son.base.entity.BaseDo;
 import lombok.Data;
 
 /**
  * 数据库访问层
  */
 @Data
-public class UserDO {
+public class UserDO extends BaseDo {
 
 	/**
 	 * userid
@@ -39,18 +40,7 @@ public class UserDO {
 	 * 年龄
 	 */
 	private Long age;
-	/**
-	 * 注册时间
-	 */
-	private Date createTime;
-	/**
-	 * 修改时间
-	 *
-	 */
-	private Date updateTime;
-	/**
-	 * 账号是否可以用 1 正常 0冻结
-	 */
+
 	private char isAvalible;
 	/**
 	 * 用户头像
