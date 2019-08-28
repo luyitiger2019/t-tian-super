@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implements MemberLoginService {
+public class  MemberLoginServiceImpl extends BaseApiService<JSONObject> implements MemberLoginService {
    @Autowired
     private UserMapper userMapper;
    @Autowired
@@ -27,7 +27,7 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
    @Autowired
     private UserTokenMapper userTokenMapper;
     @Override
-    public BaseResponse<JSONObject> login(@RequestBody  UserLogInputDTO userLoginInpDTO) {
+    public synchronized BaseResponse<JSONObject>  login(@RequestBody  UserLogInputDTO userLoginInpDTO) {
        //1.验证参数
         String mobile = userLoginInpDTO.getMobile();
         if(StringUtils.isEmpty(mobile))
@@ -42,6 +42,11 @@ public class MemberLoginServiceImpl extends BaseApiService<JSONObject> implement
         //2. 对登录密码进行加密,需要加密后对比
         String newPassword= MD5Util.MD5(password);
         String loginType = userLoginInpDTO.getLoginType();
+        String deviceInfor=userLoginInpDTO.getDeviceInfor();
+        if(StringUtils.isEmpty(deviceInfor))
+        {
+            return setResultError("登陆设备不能为空");
+        }
         if(StringUtils.isEmpty(loginType))
         {
             return setResultError("登录类型不能为空");
