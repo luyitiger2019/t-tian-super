@@ -1,18 +1,15 @@
 package com.luyitian.son.utils;
 
 import java.util.concurrent.TimeUnit;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RedisUtil {
-	private final StringRedisTemplate stringRedisTemplate;
-
 	@Autowired
-	public RedisUtil(StringRedisTemplate stringRedisTemplate) {
-		this.stringRedisTemplate = stringRedisTemplate;
-	}
+	private StringRedisTemplate stringRedisTemplate;
 
 	/**
 	 * 存放string类型
@@ -25,10 +22,47 @@ public class RedisUtil {
 	 *            超时间
 	 */
 	public void setString(String key, String data, Long timeout) {
-		stringRedisTemplate.opsForValue().set(key, data);
-		if (timeout != null) {
-			stringRedisTemplate.expire(key, timeout, TimeUnit.SECONDS);
+		try {
+
+			stringRedisTemplate.opsForValue().set(key, data);
+			if (timeout != null) {
+				stringRedisTemplate.expire(key, timeout, TimeUnit.SECONDS);
+			}
+
+		} catch (Exception e) {
+
 		}
+
+	}
+
+	/**
+	 * 开启Redis 事务
+	 * 
+	 *
+	 */
+	public void begin() {
+		// 开启Redis 事务权限
+		stringRedisTemplate.setEnableTransactionSupport(true);
+		// 开启事务
+		stringRedisTemplate.multi();
+
+	}
+
+	/**
+	 * 提交事务
+	 * 
+	 *
+	 */
+	public void exec() {
+		// 成功提交事务
+		stringRedisTemplate.exec();
+	}
+
+	/**
+	 * 回滚Redis 事务
+	 */
+	public void discard() {
+		stringRedisTemplate.discard();
 	}
 
 	/**
@@ -56,7 +90,7 @@ public class RedisUtil {
 
 	/**
 	 * 根据对应的key删除key
-	 *
+	 * 
 	 * @param key
 	 */
 	public Boolean delKey(String key) {
