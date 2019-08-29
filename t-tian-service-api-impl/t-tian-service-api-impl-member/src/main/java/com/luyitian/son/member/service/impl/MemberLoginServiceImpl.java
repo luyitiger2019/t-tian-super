@@ -78,14 +78,12 @@ public class  MemberLoginServiceImpl extends BaseApiService<JSONObject> implemen
             if (null != userTokenDo) {
                 String token = userTokenDo.getToken();
                 //从缓存中删除TONKEN
-                Boolean isremoveTonken = generateToken.removeToken(token);
-                if (isremoveTonken) {
-                    //将TONKEN的状态改为1
-                    int updateToTokenAvailability = userTokenMapper.updateTokenAvailability(token);
+                Boolean removeToken = generateToken.removeToken(token);
+                int updateToTokenAvailability = userTokenMapper.updateTokenAvailability(token);
                     if (!toDaoResult(updateToTokenAvailability)) {
                         return setResultError("系统错误");
                     }
-                }
+
             }
 
             //6.获取令牌,令牌前缀+登录类型。保证在REDIS的值为USERid, 注意变量在什么时候用，就在什么时候声明
