@@ -3,6 +3,7 @@ package com.luyitian.son.weixin.service.impl;
 import com.luyitian.son.base.api.BaseApiService;
 import com.luyitian.son.base.entity.BaseResponse;
 import com.luyitian.son.constants.Constants;
+import com.luyitian.son.utils.RedisUtil;
 import com.luyitian.son.weixin.service.VerificaCodeService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 public class VerificaCodeServiceImpl extends BaseApiService<JSONObject> implements VerificaCodeService {
-
+  
 	@Autowired
 	private final StringRedisTemplate stringRedisTemplate;
 

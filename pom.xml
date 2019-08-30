@@ -13,6 +13,7 @@
         <module>t-tian-service-api-impl</module>
         <module>t-tian-common</module>
         <module>t-tian-api-dto</module>
+        <module>t-tian-portal</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
